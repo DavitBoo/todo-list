@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <div id="content">
+        <nav class="d-flex">
+            <div class="d-flex nav-r">
+                <a href="">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                    </svg>
+                </a>
+                <a href="">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+                    </svg>
+                </a>
+                <div class="search-input">     
+                    <a href="">
+                        <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </a>
+                    <input placeholder="Search" type="text">
+                </div>
+            </div>
+            <div class="d-flex nav-l">
+                <a href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                </svg></a>
+                <a href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z" />
+                </svg></a>
+                <a href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+                </svg></a>
+                <a href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M10 21H14C14 22.1 13.1 23 12 23S10 22.1 10 21M21 19V20H3V19L5 17V11C5 7.9 7 5.2 10 4.3V4C10 2.9 10.9 2 12 2S14 2.9 14 4V4.3C17 5.2 19 7.9 19 11V17L21 19M17 11C17 8.2 14.8 6 12 6S7 8.2 7 11V18H17V11Z" />
+                </svg></a>
+                <a href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,8.39C13.57,9.4 15.42,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20C9,20 6.39,18.34 5,15.89L6.75,14V13A1.25,1.25 0 0,1 8,11.75A1.25,1.25 0 0,1 9.25,13V14H12M16,11.75A1.25,1.25 0 0,0 14.75,13A1.25,1.25 0 0,0 16,14.25A1.25,1.25 0 0,0 17.25,13A1.25,1.25 0 0,0 16,11.75Z" />
+                </svg></a>
+            </div>
+        </nav>
+        <div id="new-task">
+            <form action="" class="d-flex">
+                <div>
+                    <input type="text" placeholder="Task Name" id="task-name">
+                </div>
+
+                <div>
+                    <input type="text" placeholder="Description" id="task-description">
+                </div>
+
+                <div class="d-flex">
+                    <div class="due-date-div">
+                        <label for="due-date">Due date</label>
+                        <input type="datetime-local" name="" id="due-date">
+                    </div>
+                    <select name="Select project" id="project">
+                        <option value="" selected disabled>Select Project</option>
+                        <option value="value1">Value 1</option>
+                        <option value="value2">Value 2</option>
+                        <option value="value3">Value 3</option>
+                    </select>
+                </div>
+
+                <div class="d-flex">
+                    <select name="" id="">
+                        <option  disabled selected value="">Priority</option>
+                        <option value="value1">Low</option>
+                        <option value="value2">Middle</option>
+                        <option value="value3">High</option>
+                    </select>
+                    <div><input type="checkbox" name="" id="task-done"><label for="task-done">Task Done?</label></div>
+                </div>
+
+                <div class="d-flex buttons">
+                    <button class="btn-cancel">Cancel</button>
+                    <button class="btn-add">Add Task</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="side-bar">
+            <div>
+                <a class="d-flex" href=""><div class="d-flex">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M16,10H14V7H10V10H8L12,14M19,15H15A3,3 0 0,1 12,18A3,3 0 0,1 9,15H5V5H19M19,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+                    </svg> <div>Inbox</div>
+                </div><div>5</div></a>
+                <a class="d-flex" href=""><div class="d-flex">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
+                    </svg><div>Today</div>
+                </div> <div>5</div></a>
+                <a class="d-flex" href=""><div class="d-flex">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7 11H9V13H7V11M19 3H18V1H16V3H8V1H6V3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 5V7H5V5H19M5 19V9H19V19H5M11 15H13V17H11V15M15 15H17V17H15V15M15 11H17V13H15V11Z" />
+                    </svg><div>Upcoming</div>
+                </div> <div>5</div></a>
+                <a class="d-flex" href=""><div class="d-flex">
+                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M4 18H13L11 20H4C3.5 20 2.97 19.79 2.59 19.41C2.21 19.03 2 18.5 2 18V8H4V18M17.63 4.84C17.27 4.33 16.67 4 16 4H8C6.9 4 6 4.9 6 6V14C6 15.1 6.9 16 8 16H16C16.67 16 17.27 15.66 17.63 15.15L22 10L17.63 4.84M16 14H8V6H16L19.55 10Z" />
+                    </svg><div>Filters</div>
+                </div> <div></div></a>
+            </div>
+            <h2>Projects</h2>
+            <div>
+                <a href="">+ Add New</a>
+            </div>
+            
+        </div>
+        <div class="task-header d-flex">
+            <h2>Inbox</h2>
+            <div class="d-flex">
+                <a class="d-flex" href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10Z" />
+                </svg>Comments</a>
+                <a class="d-flex" href=""><svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M3,5V19H22V5H3M5,7H20V11H5V7M5,17V13H9V17H5M11,17V13H20V17H11Z" />
+                </svg> View</a>
+            </div>
+        </div>
+        <div class="task">
+            Tareas
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam perferendis quo dolorum hic, corrupti impedit saepe blanditiis, nobis placeat adipisci enim beatae itaque aspernatur odio aliquam accusamus voluptas fugiat officia ea tenetur atque cum delectus deleniti. Debitis doloribus saepe obcaecati numquam aut. Corporis quis molestias voluptate eos excepturi facere modi eligendi quod vero voluptates. Veritatis repellendus officiis iure pariatur accusamus nesciunt dignissimos dolores nemo natus, vero modi consectetur voluptate tenetur fuga expedita minima sequi numquam dolorem quidem corporis esse? Dicta, dolore. Ipsam vitae, odit deleniti suscipit obcaecati exercitationem aliquid sed, ratione cupiditate provident laborum id voluptatum iure magnam dolores corrupti dolore! Reiciendis ullam architecto ipsa recusandae aliquam consectetur repudiandae, accusamus dolor, voluptates quidem, quae tenetur laboriosam fugiat facere voluptatem vero? Sapiente non necessitatibus laboriosam tenetur. Ad, officiis beatae distinctio culpa illum expedita? Voluptates aperiam vero nostrum deserunt commodi tenetur reprehenderit, totam necessitatibus. Dicta inventore quidem sapiente accusantium aspernatur ex impedit vel non illum ducimus nostrum tempore eius nisi voluptatem corrupti, recusandae consequatur in expedita temporibus minima. Aliquam commodi nisi modi est et possimus, fugiat doloribus quos nulla perspiciatis ea natus repellat accusantium. Eos minus quos odio asperiores, repudiandae ad! Eos perspiciatis magni ullam reprehenderit, at quos eius sapiente adipisci sed doloribus, delectus consequuntur cum blanditiis doloremque explicabo amet cupiditate voluptas expedita eligendi. Optio libero adipisci aperiam voluptatum et possimus ipsam, itaque quidem quod dolor molestiae sequi modi nihil. Consequatur labore ipsa vero, corrupti sapiente consectetur maiores vitae eligendi tempore accusantium adipisci sunt impedit quidem modi at totam doloribus dicta excepturi, fugiat praesentium, neque voluptate? Explicabo et enim possimus quisquam voluptatibus harum labore ut! Vero, expedita quidem. Modi quod aperiam id perferendis maxime consectetur, temporibus corrupti et, pariatur repellat nemo sapiente odio, expedita corporis delectus reprehenderit distinctio quis eius. Fuga et rem, quidem quas minus ab provident numquam id praesentium qui ratione dolor laborum quos beatae porro sapiente distinctio nam repudiandae nobis alias, debitis, error similique nostrum? Vero, alias distinctio? Ullam commodi quibusdam quis vero numquam. Cum, iure omnis numquam ullam veritatis distinctio sapiente? Corporis eos accusantium earum error et possimus mollitia hic cupiditate iure, assumenda itaque, nostrum facere, reprehenderit reiciendis molestiae officia quas aperiam doloribus repellendus voluptatibus sequi incidunt dolore autem ab! Ullam aliquam illo quaerat dolor nesciunt repellendus. Ipsam consequuntur at fugit molestias eligendi neque odio quasi perferendis harum, vero nobis vitae numquam qui, accusamus nesciunt animi adipisci tempore architecto aspernatur explicabo amet? Quidem dolorum, dolore mollitia sed quos tempora quae quia laborum obcaecati provident dolor pariatur ratione! Praesentium nam perspiciatis distinctio? Quos, velit est enim fugit debitis quo suscipit esse, accusantium vero exercitationem officiis consectetur nam alias? Ipsam voluptas iusto consequuntur repellendus praesentium. Facere veniam debitis sed modi ab quo enim praesentium nesciunt cum, aperiam sit nemo sint inventore. Tempore rerum aspernatur ex, dolorum aut voluptates incidunt eligendi asperiores delectus quaerat voluptatem aliquid perferendis corporis iusto. Odio, dolores similique! Rem voluptatibus soluta veritatis sit molestias at? Culpa accusantium, ex saepe nihil, a vero facilis recusandae, tempore voluptas asperiores non maiores? Incidunt magni debitis voluptates harum consequatur sequi blanditiis!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam perferendis quo dolorum hic, corrupti impedit saepe blanditiis, nobis placeat adipisci enim beatae itaque aspernatur odio aliquam accusamus voluptas fugiat officia ea tenetur atque cum delectus deleniti. Debitis doloribus saepe obcaecati numquam aut. Corporis quis molestias voluptate eos excepturi facere modi eligendi quod vero voluptates. Veritatis repellendus officiis iure pariatur accusamus nesciunt dignissimos dolores nemo natus, vero modi consectetur voluptate tenetur fuga expedita minima sequi numquam dolorem quidem corporis esse? Dicta, dolore. Ipsam vitae, odit deleniti suscipit obcaecati exercitationem aliquid sed, ratione cupiditate provident laborum id voluptatum iure magnam dolores corrupti dolore! Reiciendis ullam architecto ipsa recusandae aliquam consectetur repudiandae, accusamus dolor, voluptates quidem, quae tenetur laboriosam fugiat facere voluptatem vero? Sapiente non necessitatibus laboriosam tenetur. Ad, officiis beatae distinctio culpa illum expedita? Voluptates aperiam vero nostrum deserunt commodi tenetur reprehenderit, totam necessitatibus. Dicta inventore quidem sapiente accusantium aspernatur ex impedit vel non illum ducimus nostrum tempore eius nisi voluptatem corrupti, recusandae consequatur in expedita temporibus minima. Aliquam commodi nisi modi est et possimus, fugiat doloribus quos nulla perspiciatis ea natus repellat accusantium. Eos minus quos odio asperiores, repudiandae ad! Eos perspiciatis magni ullam reprehenderit, at quos eius sapiente adipisci sed doloribus, delectus consequuntur cum blanditiis doloremque explicabo amet cupiditate voluptas expedita eligendi. Optio libero adipisci aperiam voluptatum et possimus ipsam, itaque quidem quod dolor molestiae sequi modi nihil. Consequatur labore ipsa vero, corrupti sapiente consectetur maiores vitae eligendi tempore accusantium adipisci sunt impedit quidem modi at totam doloribus dicta excepturi, fugiat praesentium, neque voluptate? Explicabo et enim possimus quisquam voluptatibus harum labore ut! Vero, expedita quidem. Modi quod aperiam id perferendis maxime consectetur, temporibus corrupti et, pariatur repellat nemo sapiente odio, expedita corporis delectus reprehenderit distinctio quis eius. Fuga et rem, quidem quas minus ab provident numquam id praesentium qui ratione dolor laborum quos beatae porro sapiente distinctio nam repudiandae nobis alias, debitis, error similique nostrum? Vero, alias distinctio? Ullam commodi quibusdam quis vero numquam. Cum, iure omnis numquam ullam veritatis distinctio sapiente? Corporis eos accusantium earum error et possimus mollitia hic cupiditate iure, assumenda itaque, nostrum facere, reprehenderit reiciendis molestiae officia quas aperiam doloribus repellendus voluptatibus sequi incidunt dolore autem ab! Ullam aliquam illo quaerat dolor nesciunt repellendus. Ipsam consequuntur at fugit molestias eligendi neque odio quasi perferendis harum, vero nobis vitae numquam qui, accusamus nesciunt animi adipisci tempore architecto aspernatur explicabo amet? Quidem dolorum, dolore mollitia sed quos tempora quae quia laborum obcaecati provident dolor pariatur ratione! Praesentium nam perspiciatis distinctio? Quos, velit est enim fugit debitis quo suscipit esse, accusantium vero exercitationem officiis consectetur nam alias? Ipsam voluptas iusto consequuntur repellendus praesentium. Facere veniam debitis sed modi ab quo enim praesentium nesciunt cum, aperiam sit nemo sint inventore. Tempore rerum aspernatur ex, dolorum aut voluptates incidunt eligendi asperiores delectus quaerat voluptatem aliquid perferendis corporis iusto. Odio, dolores similique! Rem voluptatibus soluta veritatis sit molestias at? Culpa accusantium, ex saepe nihil, a vero facilis recusandae, tempore voluptas asperiores non maiores? Incidunt magni debitis voluptates harum consequatur sequi blanditiis!</p>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
