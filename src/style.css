@@ -34,7 +34,6 @@ button{
     grid-template-rows: 44px 100px 1fr;
     position: relative;
     transition: all .2s;
-
 }
 
 nav{
@@ -185,7 +184,7 @@ nav a:hover{
     color: #000
 }
 
-.side-bar > div > a:hover,.task-header a:hover{
+.side-bar > div > a:hover,.task-header a:hover, .side-bar .active{
     background-color: #00000008;
     
 }

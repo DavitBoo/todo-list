@@ -6,6 +6,22 @@ const content = document.getElementById('content')
 const menuBtn = document.getElementById('menu')
 const sideBar = document.querySelector('.side-bar')
 
+const taskHeaderText = document.querySelector('#task-header > h2')
+const sideBarItems = document.querySelectorAll('.side-bar a')
+
+taskHeaderText.innerHTML = 'Today'
+sideBarItems[1].classList.add('active')
+
+sideBarItems.forEach(item => {
+    item.addEventListener('click', e => {
+        e.preventDefault();
+        sideBarItems.forEach(i => {
+            i.classList.remove('active')
+        })
+        item.classList.add('active')
+        taskHeaderText.innerHTML = item.querySelector('div').textContent
+    })
+})
 
 menuBtn.addEventListener('click', e => {
     e.preventDefault();
