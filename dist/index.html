@@ -10,7 +10,7 @@
     <div id="content">
         <nav class="d-flex">
             <div class="d-flex nav-r">
-                <a href="">
+                <a id="menu" href="">
                     <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
                     </svg>
@@ -47,8 +47,8 @@
                 </svg></a>
             </div>
         </nav>
-        <div id="new-task">
-            <form action="" class="d-flex">
+        <div id="new-task ">
+            <form action="" class="d-flex hide">
                 <div>
                     <input type="text" placeholder="Task Name" id="task-name">
                 </div>
@@ -71,18 +71,18 @@
                 </div>
 
                 <div class="d-flex">
-                    <select name="" id="">
+                    <select name="" id="priority">
                         <option  disabled selected value="">Priority</option>
-                        <option value="value1">Low</option>
-                        <option value="value2">Middle</option>
-                        <option value="value3">High</option>
+                        <option value="low">Low</option>
+                        <option value="middle">Middle</option>
+                        <option value="high">High</option>
                     </select>
                     <div><input type="checkbox" name="" id="task-done"><label for="task-done">Task Done?</label></div>
                 </div>
 
                 <div class="d-flex buttons">
-                    <button class="btn-cancel">Cancel</button>
-                    <button class="btn-add">Add Task</button>
+                    <button id="btn-cancel" class="btn-cancel">Cancel</button>
+                    <button id="btn-add" class="btn-add">Add Task</button>
                 </div>
             </form>
 
@@ -127,10 +127,8 @@
                 </svg> View</a>
             </div>
         </div>
-        <div class="task">
-            Tareas
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam perferendis quo dolorum hic, corrupti impedit saepe blanditiis, nobis placeat adipisci enim beatae itaque aspernatur odio aliquam accusamus voluptas fugiat officia ea tenetur atque cum delectus deleniti. Debitis doloribus saepe obcaecati numquam aut. Corporis quis molestias voluptate eos excepturi facere modi eligendi quod vero voluptates. Veritatis repellendus officiis iure pariatur accusamus nesciunt dignissimos dolores nemo natus, vero modi consectetur voluptate tenetur fuga expedita minima sequi numquam dolorem quidem corporis esse? Dicta, dolore. Ipsam vitae, odit deleniti suscipit obcaecati exercitationem aliquid sed, ratione cupiditate provident laborum id voluptatum iure magnam dolores corrupti dolore! Reiciendis ullam architecto ipsa recusandae aliquam consectetur repudiandae, accusamus dolor, voluptates quidem, quae tenetur laboriosam fugiat facere voluptatem vero? Sapiente non necessitatibus laboriosam tenetur. Ad, officiis beatae distinctio culpa illum expedita? Voluptates aperiam vero nostrum deserunt commodi tenetur reprehenderit, totam necessitatibus. Dicta inventore quidem sapiente accusantium aspernatur ex impedit vel non illum ducimus nostrum tempore eius nisi voluptatem corrupti, recusandae consequatur in expedita temporibus minima. Aliquam commodi nisi modi est et possimus, fugiat doloribus quos nulla perspiciatis ea natus repellat accusantium. Eos minus quos odio asperiores, repudiandae ad! Eos perspiciatis magni ullam reprehenderit, at quos eius sapiente adipisci sed doloribus, delectus consequuntur cum blanditiis doloremque explicabo amet cupiditate voluptas expedita eligendi. Optio libero adipisci aperiam voluptatum et possimus ipsam, itaque quidem quod dolor molestiae sequi modi nihil. Consequatur labore ipsa vero, corrupti sapiente consectetur maiores vitae eligendi tempore accusantium adipisci sunt impedit quidem modi at totam doloribus dicta excepturi, fugiat praesentium, neque voluptate? Explicabo et enim possimus quisquam voluptatibus harum labore ut! Vero, expedita quidem. Modi quod aperiam id perferendis maxime consectetur, temporibus corrupti et, pariatur repellat nemo sapiente odio, expedita corporis delectus reprehenderit distinctio quis eius. Fuga et rem, quidem quas minus ab provident numquam id praesentium qui ratione dolor laborum quos beatae porro sapiente distinctio nam repudiandae nobis alias, debitis, error similique nostrum? Vero, alias distinctio? Ullam commodi quibusdam quis vero numquam. Cum, iure omnis numquam ullam veritatis distinctio sapiente? Corporis eos accusantium earum error et possimus mollitia hic cupiditate iure, assumenda itaque, nostrum facere, reprehenderit reiciendis molestiae officia quas aperiam doloribus repellendus voluptatibus sequi incidunt dolore autem ab! Ullam aliquam illo quaerat dolor nesciunt repellendus. Ipsam consequuntur at fugit molestias eligendi neque odio quasi perferendis harum, vero nobis vitae numquam qui, accusamus nesciunt animi adipisci tempore architecto aspernatur explicabo amet? Quidem dolorum, dolore mollitia sed quos tempora quae quia laborum obcaecati provident dolor pariatur ratione! Praesentium nam perspiciatis distinctio? Quos, velit est enim fugit debitis quo suscipit esse, accusantium vero exercitationem officiis consectetur nam alias? Ipsam voluptas iusto consequuntur repellendus praesentium. Facere veniam debitis sed modi ab quo enim praesentium nesciunt cum, aperiam sit nemo sint inventore. Tempore rerum aspernatur ex, dolorum aut voluptates incidunt eligendi asperiores delectus quaerat voluptatem aliquid perferendis corporis iusto. Odio, dolores similique! Rem voluptatibus soluta veritatis sit molestias at? Culpa accusantium, ex saepe nihil, a vero facilis recusandae, tempore voluptas asperiores non maiores? Incidunt magni debitis voluptates harum consequatur sequi blanditiis!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam perferendis quo dolorum hic, corrupti impedit saepe blanditiis, nobis placeat adipisci enim beatae itaque aspernatur odio aliquam accusamus voluptas fugiat officia ea tenetur atque cum delectus deleniti. Debitis doloribus saepe obcaecati numquam aut. Corporis quis molestias voluptate eos excepturi facere modi eligendi quod vero voluptates. Veritatis repellendus officiis iure pariatur accusamus nesciunt dignissimos dolores nemo natus, vero modi consectetur voluptate tenetur fuga expedita minima sequi numquam dolorem quidem corporis esse? Dicta, dolore. Ipsam vitae, odit deleniti suscipit obcaecati exercitationem aliquid sed, ratione cupiditate provident laborum id voluptatum iure magnam dolores corrupti dolore! Reiciendis ullam architecto ipsa recusandae aliquam consectetur repudiandae, accusamus dolor, voluptates quidem, quae tenetur laboriosam fugiat facere voluptatem vero? Sapiente non necessitatibus laboriosam tenetur. Ad, officiis beatae distinctio culpa illum expedita? Voluptates aperiam vero nostrum deserunt commodi tenetur reprehenderit, totam necessitatibus. Dicta inventore quidem sapiente accusantium aspernatur ex impedit vel non illum ducimus nostrum tempore eius nisi voluptatem corrupti, recusandae consequatur in expedita temporibus minima. Aliquam commodi nisi modi est et possimus, fugiat doloribus quos nulla perspiciatis ea natus repellat accusantium. Eos minus quos odio asperiores, repudiandae ad! Eos perspiciatis magni ullam reprehenderit, at quos eius sapiente adipisci sed doloribus, delectus consequuntur cum blanditiis doloremque explicabo amet cupiditate voluptas expedita eligendi. Optio libero adipisci aperiam voluptatum et possimus ipsam, itaque quidem quod dolor molestiae sequi modi nihil. Consequatur labore ipsa vero, corrupti sapiente consectetur maiores vitae eligendi tempore accusantium adipisci sunt impedit quidem modi at totam doloribus dicta excepturi, fugiat praesentium, neque voluptate? Explicabo et enim possimus quisquam voluptatibus harum labore ut! Vero, expedita quidem. Modi quod aperiam id perferendis maxime consectetur, temporibus corrupti et, pariatur repellat nemo sapiente odio, expedita corporis delectus reprehenderit distinctio quis eius. Fuga et rem, quidem quas minus ab provident numquam id praesentium qui ratione dolor laborum quos beatae porro sapiente distinctio nam repudiandae nobis alias, debitis, error similique nostrum? Vero, alias distinctio? Ullam commodi quibusdam quis vero numquam. Cum, iure omnis numquam ullam veritatis distinctio sapiente? Corporis eos accusantium earum error et possimus mollitia hic cupiditate iure, assumenda itaque, nostrum facere, reprehenderit reiciendis molestiae officia quas aperiam doloribus repellendus voluptatibus sequi incidunt dolore autem ab! Ullam aliquam illo quaerat dolor nesciunt repellendus. Ipsam consequuntur at fugit molestias eligendi neque odio quasi perferendis harum, vero nobis vitae numquam qui, accusamus nesciunt animi adipisci tempore architecto aspernatur explicabo amet? Quidem dolorum, dolore mollitia sed quos tempora quae quia laborum obcaecati provident dolor pariatur ratione! Praesentium nam perspiciatis distinctio? Quos, velit est enim fugit debitis quo suscipit esse, accusantium vero exercitationem officiis consectetur nam alias? Ipsam voluptas iusto consequuntur repellendus praesentium. Facere veniam debitis sed modi ab quo enim praesentium nesciunt cum, aperiam sit nemo sint inventore. Tempore rerum aspernatur ex, dolorum aut voluptates incidunt eligendi asperiores delectus quaerat voluptatem aliquid perferendis corporis iusto. Odio, dolores similique! Rem voluptatibus soluta veritatis sit molestias at? Culpa accusantium, ex saepe nihil, a vero facilis recusandae, tempore voluptas asperiores non maiores? Incidunt magni debitis voluptates harum consequatur sequi blanditiis!</p>
+        <div class="tasks">
+            <!-- task created with JS -->
         </div>
     </div>
     <script src="main.js"></script>

@@ -33,6 +33,7 @@ button{
     grid-template-columns: 300px 1fr;
     grid-template-rows: 44px 100px 1fr;
     position: relative;
+    transition: all .2s;
 
 }
 
@@ -197,11 +198,35 @@ nav a:hover{
     justify-content: space-between;
 }
 
-.task{
+.tasks{
     padding: 1rem 2rem;
     grid-column: 2 / 2;
     grid-row: 3 / 4;
     overflow-x: scroll;
+}
+
+/*each task*/
+.task {
+    margin: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gris-oscuro);
+}
+
+.task > div{
+    justify-content: space-between;
+}
+
+.task .display-date{
+    margin: .5rem 0;
+    font-size: .7rem;
+}
+
+.task .check-btn {
+    cursor: pointer;
+}
+
+.task .completed-task{
+    text-decoration:line-through;
 }
 
 

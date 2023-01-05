@@ -6,8 +6,8 @@ export default class Task {
         this.desciption = desciption 
         this.dueDate = dueDate
         this.priority = priority
-        this.notes = notes
         this.project = project
+        this.checklist = checklist
 
     }
 }
