@@ -4,6 +4,7 @@ const task = document.querySelector('.tasks')
 
 const content = document.getElementById('content')
 const menuBtn = document.getElementById('menu')
+const homeBtn = document.getElementById('home')
 const sideBar = document.querySelector('.side-bar')
 
 const taskHeaderText = document.querySelector('#task-header > h2')
@@ -11,6 +12,15 @@ const sideBarItems = document.querySelectorAll('.side-bar a')
 
 taskHeaderText.innerHTML = 'Today'
 sideBarItems[1].classList.add('active')
+
+homeBtn.addEventListener('click', e => {
+    e.preventDefault();
+    sideBarItems.forEach(i => {
+        i.classList.remove('active')
+    })
+    sideBarItems[1].classList.add('active')
+    taskHeaderText.innerHTML = 'Today'
+})
 
 sideBarItems.forEach(item => {
     item.addEventListener('click', e => {
@@ -34,29 +44,64 @@ menuBtn.addEventListener('click', e => {
     }
 })
 
-const loadTasks = () => {
-    let taskContent = arrTemporal.reduce((acc, task) => {
-        let {title, desciption, dueDate, priority, project, checklist} = task
-        acc += `
-        <div class="task">
-                <div class="d-flex  ${checklist ? `completed-task`: ``}">
-                    <div class="d-flex">
-                        <div class="check-btn">
-                            ${showChecked(checklist)}
-                        </div>
-                        <div>
-                            ${title}
-                        </div>
-                    </div> 
-                    ${showPriority(priority)}
+
+const overlay = document.querySelector('.overlay')
+const addTaskBtn = document.getElementById('add-task')
+const newTaskWindow = document.querySelector('#new-task > form')
+const btnCancel = document.getElementById('btn-cancel')
+
+
+addTaskBtn.addEventListener('click', e => {
+    e.preventDefault();
+    overlay.classList.remove('hide')
+    newTaskWindow.classList.remove('hide')
+})
+
+
+export const closeNewTask = () => {
+    overlay.classList.add('hide')
+    newTaskWindow.classList.add('hide')
+}
+
+btnCancel.addEventListener('click', e => { 
+        e.preventDefault();
+        closeNewTask() 
+    }
+)
+
+overlay.addEventListener('click', e => { 
+        e.preventDefault();
+        closeNewTask() 
+    }
+)
+
+export const loadTasks = () => {
+    if(window.localStorage.getItem('task')){
+        let taskStored = JSON.parse(window.localStorage.getItem('task'))
+        let taskContent = taskStored.reduce((acc, task) => {
+            let {title, desciption, dueDate, priority, project, checklist} = task
+            acc += `
+            <div class="task">
+                    <div class="d-flex  ${checklist ? `completed-task`: ``}">
+                        <div class="d-flex">
+                            <div class="check-btn">
+                                ${showChecked(checklist)}
+                            </div>
+                            <div>
+                                ${title}
+                            </div>
+                        </div> 
+                        ${showPriority(priority)}
+                    </div>
+                <div class="display-date">
+                    ${dueDate}
                 </div>
-            <div class="display-date">
-                ${dueDate}
-            </div>
-        </div> `
-        return acc
-    }, '')
-    task.innerHTML = taskContent;
+            </div> `
+            return acc
+        }, '')
+        task.innerHTML = taskContent;
+        
+    }
 }
 
 
@@ -80,4 +125,3 @@ const showChecked = checklist => {
     return displayChecked
 }
 
-export default loadTasks;

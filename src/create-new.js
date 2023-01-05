@@ -1,4 +1,6 @@
+import { closeNewTask } from "./dom-content";
 import Task from "./task";
+
 
 let arrTemporal = [
     {
@@ -49,12 +51,13 @@ const dueDateInput = document.getElementById('due-date')
 const projectSelect = document.getElementById('project')
 const prioritySelect = document.getElementById('priority')
 const taskDoneCheckbutton = document.getElementById('task-done')
-const btnCancel = document.getElementById('btn-cancel')
+
 const btnAddTask = document.getElementById('btn-add')
 
 btnAddTask.addEventListener('click', e => {
     e.preventDefault();
     createTask();
+    closeNewTask();
 })
 
 
@@ -68,6 +71,17 @@ const createTask = () =>  {
     let taskDone = taskDoneCheckbutton.checked;
     
     let newTask = new Task(taskName, taskDescription, dueDate, priority, project, taskDone);
+
+    if(window.localStorage.getItem('task')){
+        console.log('hey')
+        let storagedTasks = JSON.parse(window.localStorage.getItem('task'))
+        storagedTasks.push(newTask)
+        localStorage.setItem('task', JSON.stringify(storagedTasks))
+    }else{
+        localStorage.setItem('task', JSON.stringify([newTask]))
+
+    }
+
     
     arrTemporal.push(newTask);
 
