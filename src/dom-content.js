@@ -78,10 +78,10 @@ overlay.addEventListener('click', e => {
 export const loadTasks = () => {
     if(window.localStorage.getItem('task')){
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
-        let taskContent = taskStored.reduce((acc, task) => {
+        let taskContent = taskStored.reduce((acc, task, i) => {
             let {title, desciption, dueDate, priority, project, checklist} = task
             acc += `
-            <div class="task">
+            <div class="task" data-task="${i}">
                     <div class="d-flex  ${checklist ? `completed-task`: ``}">
                         <div class="d-flex">
                             <div class="check-btn">
@@ -91,7 +91,10 @@ export const loadTasks = () => {
                                 ${title}
                             </div>
                         </div> 
-                        ${showPriority(priority)}
+                        <div class="d-flex mod-btns">    
+                            ${editSvg()}
+                            ${showPriority(priority)}
+                        </div>
                     </div>
                 <div class="display-date">
                     ${dueDate}
@@ -106,11 +109,11 @@ export const loadTasks = () => {
 
 
 const showPriority = priority => {
-    let displayPriority = `${priority==='high'? `<svg style="width:16px;height:16px" viewBox="0 0 24 24">
+    let displayPriority = `${priority==='high'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
     <path fill="red" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" />
-</svg>`: (priority==='middle'? `<svg style="width:16px;height:16px" viewBox="0 0 24 24">
+</svg>`: (priority==='middle'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
 <path fill="orange" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" />
-</svg>` : `<svg style="width:16px;height:16px" viewBox="0 0 24 24">
+</svg>` : `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
 <path fill="green" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" />
 </svg>`)}`
     return displayPriority
@@ -125,3 +128,8 @@ const showChecked = checklist => {
     return displayChecked
 }
 
+const editSvg = () => {
+    return `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M20 2H4C2.9 2 2 2.9 2 4V16C2 17.11 2.9 18 4 18H8L12 22L16 18H20C21.11 18 22 17.11 22 16V4C22 2.9 21.11 2 20 2M9.08 15H7V12.91L13.17 6.72L15.24 8.8L9.08 15M16.84 7.2L15.83 8.21L13.76 6.18L14.77 5.16C14.97 4.95 15.31 4.94 15.55 5.16L16.84 6.41C17.05 6.62 17.06 6.96 16.84 7.2Z" />
+</svg>`
+}

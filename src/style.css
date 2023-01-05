@@ -243,6 +243,11 @@ nav a:hover{
     text-decoration:line-through;
 }
 
+.task .mod-btns svg:hover{
+    transition: all .2s;
+    transform: scale(1.2);
+}
+
 
 .hide{
     display: none;
