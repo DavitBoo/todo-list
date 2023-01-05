@@ -1,4 +1,6 @@
 import { arrTemporal } from './create-new'
+import { loadEdition } from './edit-task'
+
 
 const task = document.querySelector('.tasks')
 
@@ -105,8 +107,22 @@ export const loadTasks = () => {
         task.innerHTML = taskContent;
         
     }
+
+    editEventListener();
 }
 
+
+const editEventListener = () => {
+    const editBtns = document.querySelectorAll('svg.edit-btn')
+    editBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            overlay.classList.remove('hide')
+            newTaskWindow.classList.remove('hide')
+            let taskInfo = loadEdition(btn.dataset.task)
+            /*----------------------------------------------------------------------------------------------------------*/
+        })
+    })
+}
 
 const showPriority = priority => {
     let displayPriority = `${priority==='high'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
@@ -129,7 +145,7 @@ const showChecked = checklist => {
 }
 
 const editSvg = () => {
-    return `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
+    return `<svg class="edit-btn" style="width:20px;height:20px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M20 2H4C2.9 2 2 2.9 2 4V16C2 17.11 2.9 18 4 18H8L12 22L16 18H20C21.11 18 22 17.11 22 16V4C22 2.9 21.11 2 20 2M9.08 15H7V12.91L13.17 6.72L15.24 8.8L9.08 15M16.84 7.2L15.83 8.21L13.76 6.18L14.77 5.16C14.97 4.95 15.31 4.94 15.55 5.16L16.84 6.41C17.05 6.62 17.06 6.96 16.84 7.2Z" />
 </svg>`
 }

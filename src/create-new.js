@@ -83,9 +83,14 @@ const createTask = () =>  {
     }
 
     
-    arrTemporal.push(newTask);
+    //arrTemporal.push(newTask);
 
-    console.log(arrTemporal)
+    taskNameInput.value = ''
+    taskDescriptionInput.value = ''
+    dueDateInput.value = ''
+    projectSelect.value = ''
+    prioritySelect.value = ''
+    taskDoneCheckbutton.checked = false
 }
 
 
