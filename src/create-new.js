@@ -1,6 +1,5 @@
 import { closeNewTask } from "./dom-content";
-import Task from "./task";
-
+import { createIt, reInitValues } from "./task-form";
 
 let arrTemporal = [
     {
@@ -45,12 +44,6 @@ let arrTemporal = [
     }
 ]
 
-const taskNameInput = document.getElementById('task-name')
-const taskDescriptionInput = document.getElementById('task-description')
-const dueDateInput = document.getElementById('due-date')
-const projectSelect = document.getElementById('project')
-const prioritySelect = document.getElementById('priority')
-const taskDoneCheckbutton = document.getElementById('task-done')
 
 const btnAddTask = document.getElementById('btn-add')
 
@@ -60,17 +53,9 @@ btnAddTask.addEventListener('click', e => {
     closeNewTask();
 })
 
-
 const createTask = () =>  {
     
-    let taskName = taskNameInput.value;
-    let taskDescription = taskDescriptionInput.value;
-    let dueDate = dueDateInput.value;
-    let project = projectSelect.value;
-    let priority = prioritySelect.value;
-    let taskDone = taskDoneCheckbutton.checked;
-    
-    let newTask = new Task(taskName, taskDescription, dueDate, priority, project, taskDone);
+    let newTask = createIt();
 
     if(window.localStorage.getItem('task')){
         console.log('hey')
@@ -82,15 +67,8 @@ const createTask = () =>  {
 
     }
 
-    
-    //arrTemporal.push(newTask);
+    reInitValues();
 
-    taskNameInput.value = ''
-    taskDescriptionInput.value = ''
-    dueDateInput.value = ''
-    projectSelect.value = ''
-    prioritySelect.value = ''
-    taskDoneCheckbutton.checked = false
 }
 
 
