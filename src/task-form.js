@@ -37,5 +37,12 @@ export const valuesEdit = (task) => {
 }
 
 export const createIt = () => {
+    taskName = taskNameInput.value;
+    taskDescription = taskDescriptionInput.value;
+    dueDate = dueDateInput.value;
+    project = projectSelect.value;
+    priority = prioritySelect.value;
+    taskDone = taskDoneCheckbutton.checked;
+    
     return new Task(taskName, taskDescription, dueDate, priority, project, taskDone);
 }

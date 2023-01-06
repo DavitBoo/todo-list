@@ -5,7 +5,7 @@ import { storageAvailable } from './local-storage';
 import './style.css';
 
 if (storageAvailable('localStorage')) {
-    console.log('tuto bene')
+    console.log('local storage found')
   }
   else {
     console.log('no local storage available')

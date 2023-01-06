@@ -57,6 +57,8 @@ const createTask = () =>  {
     
     let newTask = createIt();
 
+    console.log(newTask)
+
     if(window.localStorage.getItem('task')){
         console.log('hey')
         let storagedTasks = JSON.parse(window.localStorage.getItem('task'))
