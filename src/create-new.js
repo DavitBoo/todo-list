@@ -1,4 +1,4 @@
-import { closeNewTask } from "./dom-content";
+import { closeTask } from "./dom-content";
 import { createIt, reInitValues } from "./task-form";
 
 let arrTemporal = [
@@ -50,14 +50,12 @@ const btnAddTask = document.getElementById('btn-add')
 btnAddTask.addEventListener('click', e => {
     e.preventDefault();
     createTask();
-    closeNewTask();
+    closeTask();
 })
 
 const createTask = () =>  {
-    
-    let newTask = createIt();
 
-    console.log(newTask)
+    let newTask = createIt();
 
     if(window.localStorage.getItem('task')){
         console.log('hey')

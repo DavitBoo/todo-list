@@ -155,12 +155,12 @@ nav a:hover{
 }
 
 
-.btn-add{
+.btn-green{
     background-color: var(--lime-600);
     color: #fff;
 }
 
-.btn-add:hover{
+.btn-green:hover{
     background-color: var(--lime-700);
 }
 

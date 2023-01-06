@@ -1,6 +1,7 @@
 import { arrTemporal } from './create-new'
-import { loadEdition } from './edit-task'
-import { valuesEdit } from './task-form'
+import { loadEdition, writeEdition } from './edit-task'
+import { createIt, reInitValues, valuesEdit } from './task-form'
+
 
 
 const task = document.querySelector('.tasks')
@@ -52,29 +53,34 @@ const overlay = document.querySelector('.overlay')
 const addTaskBtn = document.getElementById('add-task')
 const newTaskWindow = document.querySelector('#new-task > form')
 const btnCancel = document.getElementById('btn-cancel')
+const btnAdd = document.getElementById('btn-add')
+const btnEdit = document.getElementById('btn-edit')
 
 
 addTaskBtn.addEventListener('click', e => {
     e.preventDefault();
+    btnAdd.classList.remove('hide')
     overlay.classList.remove('hide')
     newTaskWindow.classList.remove('hide')
 })
 
 
-export const closeNewTask = () => {
+export const closeTask = () => {
+    btnAdd.classList.add('hide')
+    btnEdit.classList.add('hide')
     overlay.classList.add('hide')
     newTaskWindow.classList.add('hide')
 }
 
 btnCancel.addEventListener('click', e => { 
         e.preventDefault();
-        closeNewTask() 
+        closeTask() 
     }
 )
 
 overlay.addEventListener('click', e => { 
         e.preventDefault();
-        closeNewTask() 
+        closeTask() 
     }
 )
 
@@ -112,20 +118,32 @@ export const loadTasks = () => {
     editEventListener();
 }
 
+let taskInfo, taskIndex;
 
 const editEventListener = () => {
     const editBtns = document.querySelectorAll('svg.edit-btn')
     editBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            btnEdit.classList.remove('hide')
             overlay.classList.remove('hide')
             newTaskWindow.classList.remove('hide')
-            let taskInfo = loadEdition(btn.dataset.task)
+            taskIndex = btn.dataset.task
+            taskInfo = loadEdition(taskIndex)
             console.log(taskInfo)
             valuesEdit(taskInfo)
+           // writeEdition(btn.dataset.task, valuesEdit(taskInfo))
             /*----------------------------------------------------------------------------------------------------------*/
         })
     })
 }
+
+btnEdit.addEventListener('click', e => {
+    e.preventDefault()
+    console.log(taskInfo)
+    writeEdition(taskIndex, createIt())
+    reInitValues();
+    closeTask() 
+})
 
 const showPriority = priority => {
     let displayPriority = `${priority==='high'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
