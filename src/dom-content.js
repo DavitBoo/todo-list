@@ -50,7 +50,8 @@ menuBtn.addEventListener('click', e => {
     }
 })
 
-
+const newTask = document.getElementById('new-task')
+const newProject = document.getElementById('new-project')
 const overlay = document.querySelector('.overlay')
 const addTaskBtn = document.getElementById('add-task')
 const newTaskWindow = document.querySelector('#new-task > form')
@@ -66,6 +67,7 @@ addTaskBtn.addEventListener('click', e => {
     btnAdd.classList.remove('hide')
     overlay.classList.remove('hide')
     newTaskWindow.classList.remove('hide')
+    newTask.classList.remove('hide')
 })
 
 
@@ -75,6 +77,8 @@ export const closeTask = () => {
     overlay.classList.add('hide')
     newTaskWindow.classList.add('hide')
     projectForm.classList.add('hide');
+    newTask.classList.add('hide')
+    newProject.classList.add('hide')
 }
 
 btnCancel.addEventListener('click', e => { 
@@ -135,14 +139,18 @@ export const loadTasks = () => {
 }
 
 const projectsDiv = document.getElementById('created-projects')
+const projectsOptions = document.getElementById('project')
 
 export const loadProjects = () => {
-    let element;
+    let element
+    projectsOptions.innerHTML = `<option value="" selected disabled>Select Project</option>`
     let projects = getProject()
     projects.forEach(proj => {
         element = document.createElement('a')
         element.innerHTML = `${proj}`
         projectsDiv.appendChild(element)
+
+        projectsOptions.innerHTML += `<option value="${proj}">${proj}</option>`
     })
 }
 
@@ -225,6 +233,7 @@ addProjBtn.addEventListener('click', e => {
     e.preventDefault();
     overlay.classList.remove('hide')
     projectForm.classList.remove('hide');
+    newProject.classList.remove('hide')
 })
 
 addTheProjBtn.addEventListener('click', e => {

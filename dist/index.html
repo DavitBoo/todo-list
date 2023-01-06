@@ -41,7 +41,7 @@
             </div>
         </nav>
         <div class="overlay hide"></div>
-        <div id="new-task">
+        <div id="new-task" class="hide">
             <form action="" class="d-flex hide">
                 <div>
                     <input type="text" placeholder="Task Name" id="task-name">
@@ -57,10 +57,11 @@
                         <input type="datetime-local" name="" id="due-date">
                     </div>
                     <select name="Select project" id="project">
-                        <option value="" selected disabled>Select Project</option>
+                        <!-- created with JS form storage -->
+                        <!-- <option value="" selected disabled>Select Project</option>
                         <option value="value1">Value 1</option>
                         <option value="value2">Value 2</option>
-                        <option value="value3">Value 3</option>
+                        <option value="value3">Value 3</option> -->
                     </select>
                 </div>
 
@@ -83,7 +84,7 @@
 
         </div>
 
-        <div id="new-project">
+        <div id="new-project" class="hide">
             <form action="" id="project-form" class="new-project d-flex hide">
                 <h2>New project</h2>
                 <input id="proj-name" type="text" placeholder="Project name">

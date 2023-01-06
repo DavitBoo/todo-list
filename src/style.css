@@ -35,6 +35,8 @@ button{
     transition: all .2s;
 }
 
+/*nav bar top */
+
 nav{
     background-color: var(--lime-600);
     padding: 1rem 2rem;
@@ -54,6 +56,8 @@ nav a{
 nav a:hover{
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+/*navbar top left side  */
 
 .nav-l{
     align-items: center;
@@ -79,10 +83,14 @@ nav a:hover{
     color: #000;
 }
 
+/*navbar top right side  */
+
 .nav-r{
     align-items: center
 }
 
+
+/* white overlay */
 .overlay{
     position: absolute;
     width: 100%;
@@ -240,6 +248,7 @@ nav a:hover{
 .side-bar #created-projects{
     flex-direction: column;
     gap: 0;
+    overflow-y: scroll;
 }
 
 .side-bar #created-projects a:not(:first-child){
@@ -247,6 +256,7 @@ nav a:hover{
     cursor: pointer;
 }
 
+/*task header */
 .task-header{
     padding: 1rem 2rem;
     grid-column: 2 / 2;
@@ -255,6 +265,7 @@ nav a:hover{
     justify-content: space-between;
 }
 
+/* task space */
 .tasks{
     padding: 1rem 2rem;
     grid-column: 2 / 2;
@@ -304,6 +315,7 @@ nav a:hover{
     transform: scale(1.2);
 }
 
+/* hide class */
 
 .hide{
     display: none;

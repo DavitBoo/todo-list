@@ -1,3 +1,5 @@
+import { loadProjects } from "./dom-content"
+
 export const createProject = projectName =>  {
 
     if(window.localStorage.getItem('projects')){
@@ -11,6 +13,8 @@ export const createProject = projectName =>  {
         localStorage.setItem('projects', JSON.stringify([projectName]))
 
     }
+
+    loadProjects()
 }
 
 export const getProject = () => {
