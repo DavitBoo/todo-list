@@ -91,6 +91,7 @@ nav a:hover{
     z-index: 5;
 }
 
+/* New task window */
 
 #new-task{
     position: absolute;
@@ -173,6 +174,45 @@ nav a:hover{
     background-color: #e3e3e3;
 }
 
+
+/* new project window */
+#new-project{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #fff;
+    max-width: 550px;
+    width: 100%;
+    z-index: 10;
+    border-radius: 16px;
+    box-shadow: 0px 0px 35px 2px #00000040;
+}
+
+#new-project form{
+    flex-direction: column;
+    padding: 2rem;
+}
+
+#new-project > form input {
+    border: 1px solid var(--gris-oscuro);
+    border-radius: 6px;
+    outline-style: none;
+    padding: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+#new-project > form input:focus{
+    border: 1px solid #000;
+}
+
+
+#new-project > form .proj-btns{
+    justify-content: flex-end
+}
+
+/* side bar */
+
 .side-bar{
     position: sticky;
     padding:  2rem;
@@ -195,6 +235,16 @@ nav a:hover{
 .side-bar > div > a:hover,.task-header a:hover, .side-bar .active{
     background-color: #00000008;
     
+}
+
+.side-bar #created-projects{
+    flex-direction: column;
+    gap: 0;
+}
+
+.side-bar #created-projects a:not(:first-child){
+    margin-left: 1rem;
+    cursor: pointer;
 }
 
 .task-header{
@@ -237,6 +287,12 @@ nav a:hover{
 
 .task .check-btn {
     cursor: pointer;
+}
+
+.task .task-description{
+    font-size: .8rem;
+    margin: 0 3rem;
+    text-align: left;
 }
 
 .task .completed-task{

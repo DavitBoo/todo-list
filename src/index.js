@@ -1,5 +1,5 @@
 import createTask from './create-new';
-import { loadTasks } from './dom-content';
+import { loadProjects, loadTasks } from './dom-content';
 import { storageAvailable } from './local-storage';
 
 import './style.css';
@@ -12,5 +12,6 @@ if (storageAvailable('localStorage')) {
   }
 
 loadTasks();
+loadProjects();
 
 

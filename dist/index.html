@@ -82,6 +82,18 @@
             </form>
 
         </div>
+
+        <div id="new-project">
+            <form action="" id="project-form" class="new-project d-flex hide">
+                <h2>New project</h2>
+                <input id="proj-name" type="text" placeholder="Project name">
+                <div class="d-flex proj-btns">
+                    <button id="btn-close" class="btn-cancel">Close</button>
+                    <button class="btn-green" id="add-proj">Add project</button>
+                </div>
+            </form>
+        </div>
+
         <div class="side-bar">
             <div>
                 <a class="d-flex" href=""><div class="d-flex">
@@ -106,8 +118,8 @@
                 </div> <div></div></a>
             </div>
             <h2>Projects</h2>
-            <div>
-                <a href="">+ Add New</a>
+            <div id="created-projects" class="d-flex">
+                <a id="add-proj-btn" href="">+ Add New</a>
             </div>
             
         </div>

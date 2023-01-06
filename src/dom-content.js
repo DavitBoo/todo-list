@@ -1,9 +1,8 @@
 import { arrTemporal } from './create-new'
+import { createProject, getProject } from './create-project'
 import { deleteTask } from './delete-task'
 import { loadEdition, writeEdition } from './edit-task'
 import { createIt, reInitValues, valuesEdit } from './task-form'
-
-
 
 
 const task = document.querySelector('.tasks')
@@ -14,7 +13,7 @@ const homeBtn = document.getElementById('home')
 const sideBar = document.querySelector('.side-bar')
 
 const taskHeaderText = document.querySelector('#task-header > h2')
-const sideBarItems = document.querySelectorAll('.side-bar a')
+const sideBarItems = document.querySelectorAll('.side-bar div:first-child a')
 
 taskHeaderText.innerHTML = 'Today'
 sideBarItems[1].classList.add('active')
@@ -28,6 +27,7 @@ homeBtn.addEventListener('click', e => {
     taskHeaderText.innerHTML = 'Today'
 })
 
+console.log(sideBarItems)
 sideBarItems.forEach(item => {
     item.addEventListener('click', e => {
         e.preventDefault();
@@ -55,8 +55,10 @@ const overlay = document.querySelector('.overlay')
 const addTaskBtn = document.getElementById('add-task')
 const newTaskWindow = document.querySelector('#new-task > form')
 const btnCancel = document.getElementById('btn-cancel')
+const btnClose = document.getElementById('btn-close')
 const btnAdd = document.getElementById('btn-add')
 const btnEdit = document.getElementById('btn-edit')
+
 
 
 addTaskBtn.addEventListener('click', e => {
@@ -72,9 +74,16 @@ export const closeTask = () => {
     btnEdit.classList.add('hide')
     overlay.classList.add('hide')
     newTaskWindow.classList.add('hide')
+    projectForm.classList.add('hide');
 }
 
 btnCancel.addEventListener('click', e => { 
+        e.preventDefault();
+        closeTask() 
+    }
+)
+
+btnClose.addEventListener('click', e => { 
         e.preventDefault();
         closeTask() 
     }
@@ -102,6 +111,9 @@ export const loadTasks = () => {
                                 ${title}
                             </div>
                         </div> 
+                        <div class="task-description">
+                            ${desciption}
+                        </div>
                         <div class="d-flex mod-btns">    
                             ${editSvg(i)}
                             ${showPriority(priority)}
@@ -120,6 +132,18 @@ export const loadTasks = () => {
 
     editEventListener();
     deleteEventListener();
+}
+
+const projectsDiv = document.getElementById('created-projects')
+
+export const loadProjects = () => {
+    let element;
+    let projects = getProject()
+    projects.forEach(proj => {
+        element = document.createElement('a')
+        element.innerHTML = `${proj}`
+        projectsDiv.appendChild(element)
+    })
 }
 
 let taskInfo, taskIndex;
@@ -190,3 +214,24 @@ const trashSvg = i => {
     <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
 </svg>`
 }
+
+
+const projectForm = document.getElementById('project-form')
+const addProjBtn = document.getElementById('add-proj-btn')
+const addTheProjBtn = document.getElementById('add-proj')
+const projName = document.getElementById('proj-name')
+
+addProjBtn.addEventListener('click', e => {
+    e.preventDefault();
+    overlay.classList.remove('hide')
+    projectForm.classList.remove('hide');
+})
+
+addTheProjBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    createProject(projName.value)
+
+    projName.value = ''
+    closeTask();
+})
