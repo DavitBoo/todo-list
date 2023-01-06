@@ -1,5 +1,6 @@
-import { closeTask } from "./dom-content";
+import { closeTask, loadTasks } from "./dom-content";
 import { createIt, reInitValues } from "./task-form";
+
 
 let arrTemporal = [
     {
@@ -68,6 +69,7 @@ const createTask = () =>  {
     }
 
     reInitValues();
+    loadTasks();
 
 }
 
