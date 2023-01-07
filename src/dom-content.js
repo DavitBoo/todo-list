@@ -110,14 +110,14 @@ export const loadTasks = () => {
         let taskContent = taskStored.reduce((acc, task, i) => {
             console.log(taskHeaderText.innerHTML)
             let {title, desciption, dueDate, dueTime, priority, project, checklist} = task
-            console.log(new Date(dueDate))
+            console.log(taskHeaderText)
             if(
                 taskHeaderText.innerHTML.trim() === 'Inbox' ||
                 taskHeaderText.innerHTML.trim() === 'Today' && isToday(new Date(dueDate)) ||
                 taskHeaderText.innerHTML.trim() === 'Upcoming' && isAfter(new Date(dueDate), new Date()) ||
-                taskHeaderText.innerHTML.trim() === 'Finished not deleted' && checklist === true
-            
-            
+                taskHeaderText.innerHTML.trim() === 'Finished not deleted' && checklist === true ||
+                taskHeaderText.innerHTML.trim() === project
+    
             ){
                 acc += `
                 <div class="task" data-task="${i}">
@@ -163,7 +163,7 @@ export const loadProjects = () => {
     let projects = getProject()
 
     projects.forEach(proj => {
-        projectsDiv.innerHTML += `<a href=""><div>${proj}</div></a>`
+        projectsDiv.innerHTML += `<a href=""><div class="proj-marc">${proj}</div></a>`
         projectsOptions.innerHTML += `<option value="${proj}">${proj}</option>`
     })
     sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side-bar #projects a')
