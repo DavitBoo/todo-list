@@ -4,9 +4,10 @@ import { deleteTask } from './delete-task'
 import { loadEdition, writeEdition } from './edit-task'
 import { createIt, reInitValues, valuesEdit } from './task-form'
 import { isToday, isAfter } from 'date-fns'
-import { addProjBtnEvent, addTaskBtnEvent, addTheProjBtnEvent, btnCancelEvent, btnCloseEvent, btnEditEvent, clickOnTaskEvent, deleteEventListener, editEventListener, homeBtnEvent, menuBtnEvent, overlayEvent, sideBarItemsEvent, taskStateBtnEvent } from './events'
+import Events from './events'
 
-sideBarItemsEvent
+
+Events.sideBarItemsEvent()
 
 const task = document.querySelector('.tasks')
 
@@ -21,9 +22,9 @@ let sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side
 taskHeaderText.innerHTML = 'Today'
 sideBarItems[1].classList.add('active')
 
-homeBtnEvent();
+Events.homeBtnEvent();
 
-menuBtnEvent();
+Events.menuBtnEvent();
 
 const newTask = document.getElementById('new-task')
 const newProject = document.getElementById('new-project')
@@ -36,7 +37,7 @@ const btnAdd = document.getElementById('btn-add')
 const btnEdit = document.getElementById('btn-edit')
 
 
-addTaskBtnEvent();
+Events.addTaskBtnEvent();
 
 
 export const closeTask = () => {
@@ -49,9 +50,9 @@ export const closeTask = () => {
     newProject.classList.add('hide')
 }
 
-btnCancelEvent();
-btnCloseEvent();
-overlayEvent();
+Events.btnCancelEvent();
+Events.btnCloseEvent();
+Events.overlayEvent();
 
 export const loadTasks = () => {
     if(window.localStorage.getItem('task')){
@@ -103,13 +104,13 @@ export const loadTasks = () => {
 
         task.innerHTML = taskContent;
         
-        clickOnTaskEvent();
-        taskStateBtnEvent();
+        Events.clickOnTaskEvent();
+        Events.taskStateBtnEvent();
         
     }
 
-    editEventListener();
-    deleteEventListener();
+    Events.editEventListener();
+    Events.deleteEventListener();
 }
 
 const projectsDiv = document.getElementById('projects')
@@ -126,10 +127,10 @@ export const loadProjects = () => {
     })
     sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side-bar #projects a')
     console.log(sideBarItems)
-    sideBarItemsEvent();
+    Events.sideBarItemsEvent();
 }
 
-btnEditEvent();
+Events.btnEditEvent();
 
 const showPriority = priority => {
     let displayPriority = `${priority==='high'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
@@ -172,6 +173,6 @@ const downArrow = i => {
 
 const projectForm = document.getElementById('project-form')
 
-addProjBtnEvent()
-addTheProjBtnEvent()
+Events.addProjBtnEvent()
+Events.addTheProjBtnEvent()
 
