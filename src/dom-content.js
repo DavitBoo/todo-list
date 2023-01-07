@@ -1,20 +1,10 @@
-import { arrTemporal } from './create-new'
 import { createProject, getProject } from './create-project'
-import { deleteTask } from './delete-task'
-import { loadEdition, writeEdition } from './edit-task'
-import { createIt, reInitValues, valuesEdit } from './task-form'
 import { isToday, isAfter } from 'date-fns'
 import Events from './events'
-
 
 Events.sideBarItemsEvent()
 
 const task = document.querySelector('.tasks')
-
-const content = document.getElementById('content')
-const menuBtn = document.getElementById('menu')
-const homeBtn = document.getElementById('home')
-const sideBar = document.querySelector('.side-bar')
 
 const taskHeaderText = document.querySelector('#task-header > h2')
 let sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side-bar #projects a')
@@ -29,10 +19,7 @@ Events.menuBtnEvent();
 const newTask = document.getElementById('new-task')
 const newProject = document.getElementById('new-project')
 const overlay = document.querySelector('.overlay')
-const addTaskBtn = document.getElementById('add-task')
 const newTaskWindow = document.querySelector('#new-task > form')
-const btnCancel = document.getElementById('btn-cancel')
-const btnClose = document.getElementById('btn-close')
 const btnAdd = document.getElementById('btn-add')
 const btnEdit = document.getElementById('btn-edit')
 
