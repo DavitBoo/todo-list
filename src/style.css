@@ -250,6 +250,14 @@ nav a:hover{
     gap: 0;
 }
 
+.side-bar #created-projects  a:hover{
+    color: var(--lime-600);
+    transform: scale(1.1);
+    margin: 2px 2rem;
+    transition: all .2s;
+}
+
+
 .side-bar #projects{
     flex-direction: column;
     gap: 0;
@@ -261,6 +269,8 @@ nav a:hover{
     cursor: pointer;
     text-decoration: none;
 }
+
+
 
 /*task header */
 .task-header{
@@ -321,8 +331,17 @@ nav a:hover{
     transform: scale(1.2);
 }
 
+.task .down-arrow{
+    transition: all .2s;
+}
+
 /* hide class */
 
 .hide{
     display: none;
+}
+
+.turn180{
+    transform: rotate(180deg);
+    transition: all .2s;
 }

@@ -4,7 +4,9 @@ import { deleteTask } from './delete-task'
 import { loadEdition, writeEdition } from './edit-task'
 import { createIt, reInitValues, valuesEdit } from './task-form'
 import { isToday, isAfter } from 'date-fns'
+import { addProjBtnEvent, addTaskBtnEvent, addTheProjBtnEvent, btnCancelEvent, btnCloseEvent, btnEditEvent, clickOnTaskEvent, deleteEventListener, editEventListener, homeBtnEvent, menuBtnEvent, overlayEvent, sideBarItemsEvent, taskStateBtnEvent } from './events'
 
+sideBarItemsEvent
 
 const task = document.querySelector('.tasks')
 
@@ -19,41 +21,9 @@ let sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side
 taskHeaderText.innerHTML = 'Today'
 sideBarItems[1].classList.add('active')
 
-homeBtn.addEventListener('click', e => {
-    e.preventDefault();
-    sideBarItems.forEach(i => {
-        i.classList.remove('active')
-    })
-    sideBarItems[1].classList.add('active')
-    taskHeaderText.innerHTML = 'Today'
-})
+homeBtnEvent();
 
-console.log(sideBarItems)
-const sideBarItemsEvent = () => {
-    sideBarItems.forEach(item => {
-        item.addEventListener('click', e => {
-            e.preventDefault();
-            sideBarItems.forEach(i => {
-                i.classList.remove('active')
-            })
-            item.classList.add('active')
-            taskHeaderText.innerHTML = item.querySelector('div').textContent
-            loadTasks();
-        })
-    })
-
-}
-
-menuBtn.addEventListener('click', e => {
-    e.preventDefault();
-    if(sideBar.classList.contains('hide')){
-        content.style.gridTemplateColumns = "300px 1fr";
-        sideBar.classList.remove('hide')
-    }else{
-        content.style.gridTemplateColumns = "0 1fr";
-        sideBar.classList.add('hide')
-    }
-})
+menuBtnEvent();
 
 const newTask = document.getElementById('new-task')
 const newProject = document.getElementById('new-project')
@@ -66,14 +36,7 @@ const btnAdd = document.getElementById('btn-add')
 const btnEdit = document.getElementById('btn-edit')
 
 
-
-addTaskBtn.addEventListener('click', e => {
-    e.preventDefault();
-    btnAdd.classList.remove('hide')
-    overlay.classList.remove('hide')
-    newTaskWindow.classList.remove('hide')
-    newTask.classList.remove('hide')
-})
+addTaskBtnEvent();
 
 
 export const closeTask = () => {
@@ -86,67 +49,62 @@ export const closeTask = () => {
     newProject.classList.add('hide')
 }
 
-btnCancel.addEventListener('click', e => { 
-        e.preventDefault();
-        closeTask() 
-    }
-)
-
-btnClose.addEventListener('click', e => { 
-        e.preventDefault();
-        closeTask() 
-    }
-)
-
-overlay.addEventListener('click', e => { 
-        e.preventDefault();
-        closeTask() 
-    }
-)
+btnCancelEvent();
+btnCloseEvent();
+overlayEvent();
 
 export const loadTasks = () => {
     if(window.localStorage.getItem('task')){
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
         let taskContent = taskStored.reduce((acc, task, i) => {
-            console.log(taskHeaderText.innerHTML)
+           
             let {title, desciption, dueDate, dueTime, priority, project, checklist} = task
-            console.log(taskHeaderText)
+
             if(
-                taskHeaderText.innerHTML.trim() === 'Inbox' ||
+
+                taskHeaderText.innerHTML.trim() === 'Inbox' && checklist === false ||
                 taskHeaderText.innerHTML.trim() === 'Today' && isToday(new Date(dueDate)) ||
                 taskHeaderText.innerHTML.trim() === 'Upcoming' && isAfter(new Date(dueDate), new Date()) ||
                 taskHeaderText.innerHTML.trim() === 'Finished not deleted' && checklist === true ||
                 taskHeaderText.innerHTML.trim() === project
     
             ){
+
                 acc += `
                 <div class="task" data-task="${i}">
                         <div class="d-flex  ${checklist ? `completed-task`: ``}">
                             <div class="d-flex">
                                 <div class="check-btn">
-                                    ${showChecked(checklist)}
+                                    ${showChecked(checklist, i)}
                                 </div>
                                 <div>
                                     ${title}
                                 </div>
                             </div> 
-                            <div class="task-description">
-                                ${desciption}
+                            <div>
+                                ${downArrow(i)}
                             </div>
                             <div class="d-flex mod-btns">    
-                                ${editSvg(i)}
-                                ${showPriority(priority)}
-                                ${trashSvg(i)}
+                            ${editSvg(i)}
+                            ${showPriority(priority)}
+                            ${trashSvg(i)}
                             </div>
-                        </div>
-                    <div class="display-date">
-                        ${dueDate} at ${dueTime}
-                    </div>
+                            </div>
+                            <div class="display-date">
+                            ${dueDate} at ${dueTime}
+                            </div>
+                            <div class="task-description hide">
+                                ${desciption}
+                            </div>
                 </div> `
             }
             return acc
         }, '')
+
         task.innerHTML = taskContent;
+        
+        clickOnTaskEvent();
+        taskStateBtnEvent();
         
     }
 
@@ -171,43 +129,7 @@ export const loadProjects = () => {
     sideBarItemsEvent();
 }
 
-let taskInfo, taskIndex;
-
-const editEventListener = () => {
-    const editBtns = document.querySelectorAll('svg.edit-btn')
-    editBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btnEdit.classList.remove('hide')
-            overlay.classList.remove('hide')
-            newTaskWindow.classList.remove('hide')
-            newTask.classList.remove('hide')
-            taskIndex = btn.dataset.task
-            taskInfo = loadEdition(taskIndex)
-            console.log(taskInfo)
-            valuesEdit(taskInfo)
-           // writeEdition(btn.dataset.task, valuesEdit(taskInfo))
-            /*----------------------------------------------------------------------------------------------------------*/
-        })
-    })
-}
-
-const deleteEventListener = () => {
-    const deleteBtn = document.querySelectorAll('svg.delete-btn')
-    deleteBtn.forEach(btn => {
-        btn.addEventListener('click', () => {
-            deleteTask(btn.dataset.delete)
-        })
-        
-    })
-}
-
-btnEdit.addEventListener('click', e => {
-    e.preventDefault()
-    console.log(taskInfo)
-    writeEdition(taskIndex, createIt())
-    reInitValues();
-    closeTask() 
-})
+btnEditEvent();
 
 const showPriority = priority => {
     let displayPriority = `${priority==='high'? `<svg style="width:20px;height:20px" viewBox="0 0 24 24">
@@ -220,12 +142,12 @@ const showPriority = priority => {
     return displayPriority
 }
 
-const showChecked = checklist => {
-    let displayChecked = `${checklist ? `<svg style="width:16px;height:16px" viewBox="0 0 24 24">
+const showChecked = (checklist, i) => {
+    let displayChecked = `<svg class="task-state" data-state="${i}" style="width:16px;height:16px" viewBox="0 0 24 24"> ${checklist ? `
         <path fill="green" d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-        </svg>` : `<svg style="width:16px;height:16px" viewBox="0 0 24 24">
+        </svg>` : `
             <path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" />
-        </svg>`}`
+        `}</svg>`
     return displayChecked
 }
 
@@ -242,23 +164,14 @@ const trashSvg = i => {
 }
 
 
+const downArrow = i => {
+    return`<svg class="down-arrow" data-arrow="${i}" style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+</svg>`
+}
+
 const projectForm = document.getElementById('project-form')
-const addProjBtn = document.getElementById('add-proj-btn')
-const addTheProjBtn = document.getElementById('add-proj')
-const projName = document.getElementById('proj-name')
 
-addProjBtn.addEventListener('click', e => {
-    e.preventDefault();
-    overlay.classList.remove('hide')
-    projectForm.classList.remove('hide');
-    newProject.classList.remove('hide')
-})
+addProjBtnEvent()
+addTheProjBtnEvent()
 
-addTheProjBtn.addEventListener('click', e => {
-    e.preventDefault();
-
-    createProject(projName.value)
-
-    projName.value = ''
-    closeTask();
-})

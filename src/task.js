@@ -15,6 +15,7 @@ export default class Task {
         this.priority = priority
         this.project = project
         this.checklist = checklist
+        this.defautlDate = dueDate;
 
     }
 }
