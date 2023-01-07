@@ -230,17 +230,17 @@ nav a:hover{
     background-color: var(--gris);
 }
 
-.side-bar > div > a, .task-header a {
+.side-bar > div > a, .task-header a, .side-bar #projects a {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
     font-size: 0.8rem;
     border-radius: 8px;
     text-decoration: none;
-    color: #000
+    color: #000;    
 }
 
-.side-bar > div > a:hover,.task-header a:hover, .side-bar .active{
+.side-bar > div > a:hover,.task-header a:hover, .side-bar .active, .side-bar #projects a:hover{
     background-color: #00000008;
     
 }
@@ -248,12 +248,18 @@ nav a:hover{
 .side-bar #created-projects{
     flex-direction: column;
     gap: 0;
+}
+
+.side-bar #projects{
+    flex-direction: column;
+    gap: 0;
     overflow-y: scroll;
 }
 
-.side-bar #created-projects a:not(:first-child){
+.side-bar #projects a{
     margin-left: 1rem;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /*task header */

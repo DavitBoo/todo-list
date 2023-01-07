@@ -3,6 +3,7 @@ import { createProject, getProject } from './create-project'
 import { deleteTask } from './delete-task'
 import { loadEdition, writeEdition } from './edit-task'
 import { createIt, reInitValues, valuesEdit } from './task-form'
+import { isToday, isAfter } from 'date-fns'
 
 
 const task = document.querySelector('.tasks')
@@ -13,7 +14,7 @@ const homeBtn = document.getElementById('home')
 const sideBar = document.querySelector('.side-bar')
 
 const taskHeaderText = document.querySelector('#task-header > h2')
-const sideBarItems = document.querySelectorAll('.side-bar div:first-child a')
+let sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side-bar #projects a')
 
 taskHeaderText.innerHTML = 'Today'
 sideBarItems[1].classList.add('active')
@@ -28,16 +29,20 @@ homeBtn.addEventListener('click', e => {
 })
 
 console.log(sideBarItems)
-sideBarItems.forEach(item => {
-    item.addEventListener('click', e => {
-        e.preventDefault();
-        sideBarItems.forEach(i => {
-            i.classList.remove('active')
+const sideBarItemsEvent = () => {
+    sideBarItems.forEach(item => {
+        item.addEventListener('click', e => {
+            e.preventDefault();
+            sideBarItems.forEach(i => {
+                i.classList.remove('active')
+            })
+            item.classList.add('active')
+            taskHeaderText.innerHTML = item.querySelector('div').textContent
+            loadTasks();
         })
-        item.classList.add('active')
-        taskHeaderText.innerHTML = item.querySelector('div').textContent
     })
-})
+
+}
 
 menuBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -103,31 +108,42 @@ export const loadTasks = () => {
     if(window.localStorage.getItem('task')){
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
         let taskContent = taskStored.reduce((acc, task, i) => {
-            let {title, desciption, dueDate, priority, project, checklist} = task
-            acc += `
-            <div class="task" data-task="${i}">
-                    <div class="d-flex  ${checklist ? `completed-task`: ``}">
-                        <div class="d-flex">
-                            <div class="check-btn">
-                                ${showChecked(checklist)}
+            console.log(taskHeaderText.innerHTML)
+            let {title, desciption, dueDate, dueTime, priority, project, checklist} = task
+            console.log(new Date(dueDate))
+            if(
+                taskHeaderText.innerHTML.trim() === 'Inbox' ||
+                taskHeaderText.innerHTML.trim() === 'Today' && isToday(new Date(dueDate)) ||
+                taskHeaderText.innerHTML.trim() === 'Upcoming' && isAfter(new Date(dueDate), new Date()) ||
+                taskHeaderText.innerHTML.trim() === 'Finished not deleted' && checklist === true
+            
+            
+            ){
+                acc += `
+                <div class="task" data-task="${i}">
+                        <div class="d-flex  ${checklist ? `completed-task`: ``}">
+                            <div class="d-flex">
+                                <div class="check-btn">
+                                    ${showChecked(checklist)}
+                                </div>
+                                <div>
+                                    ${title}
+                                </div>
+                            </div> 
+                            <div class="task-description">
+                                ${desciption}
                             </div>
-                            <div>
-                                ${title}
+                            <div class="d-flex mod-btns">    
+                                ${editSvg(i)}
+                                ${showPriority(priority)}
+                                ${trashSvg(i)}
                             </div>
-                        </div> 
-                        <div class="task-description">
-                            ${desciption}
                         </div>
-                        <div class="d-flex mod-btns">    
-                            ${editSvg(i)}
-                            ${showPriority(priority)}
-                            ${trashSvg(i)}
-                        </div>
+                    <div class="display-date">
+                        ${dueDate} at ${dueTime}
                     </div>
-                <div class="display-date">
-                    ${dueDate}
-                </div>
-            </div> `
+                </div> `
+            }
             return acc
         }, '')
         task.innerHTML = taskContent;
@@ -138,20 +154,21 @@ export const loadTasks = () => {
     deleteEventListener();
 }
 
-const projectsDiv = document.getElementById('created-projects')
+const projectsDiv = document.getElementById('projects')
 const projectsOptions = document.getElementById('project')
 
 export const loadProjects = () => {
-    let element
+    projectsDiv.innerHTML = ''
     projectsOptions.innerHTML = `<option value="" selected disabled>Select Project</option>`
     let projects = getProject()
-    projects.forEach(proj => {
-        element = document.createElement('a')
-        element.innerHTML = `${proj}`
-        projectsDiv.appendChild(element)
 
+    projects.forEach(proj => {
+        projectsDiv.innerHTML += `<a href=""><div>${proj}</div></a>`
         projectsOptions.innerHTML += `<option value="${proj}">${proj}</option>`
     })
+    sideBarItems = document.querySelectorAll('.side-bar div:first-child a, .side-bar #projects a')
+    console.log(sideBarItems)
+    sideBarItemsEvent();
 }
 
 let taskInfo, taskIndex;
@@ -163,6 +180,7 @@ const editEventListener = () => {
             btnEdit.classList.remove('hide')
             overlay.classList.remove('hide')
             newTaskWindow.classList.remove('hide')
+            newTask.classList.remove('hide')
             taskIndex = btn.dataset.task
             taskInfo = loadEdition(taskIndex)
             console.log(taskInfo)
