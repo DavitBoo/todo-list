@@ -1,8 +1,8 @@
+import { createProject } from "./create-project";
 import { deleteTask } from "./delete-task";
 import { closeTask, loadTasks } from "./dom-content";
 import { loadEdition, writeEdition } from "./edit-task";
 import { createIt, reInitValues, valuesEdit } from "./task-form";
-
 
 const Events = (() => {
 
