@@ -2,6 +2,13 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 // import { getFirestore, collection, getDocs } from 'firebase/firestore'
 
+import createTask from './create-new';
+import { loadProjects, loadTasks } from './dom-content';
+import { storageAvailable } from './local-storage';
+
+import './style.css';
+
+
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyBKKV9Tn3eW_P4XXj2hDqX24YjSkWAYKds",
   authDomain: "todolist-9c8f1.firebaseapp.com",
@@ -11,6 +18,7 @@ const firebaseApp = initializeApp({
   appId: "1:982450165115:web:74d3595b356854f09e19de"
 });
 
+// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(firebaseApp);
 // const db = getFirestore(firebaseApp);
 // const todosCol = collection(db, 'todos')
@@ -21,14 +29,15 @@ const googleLoginButton = document.getElementById("google-login-btn");
 googleLoginButton.addEventListener("click", () => {
   // Crea el objeto del proveedor de Google
   const provider = new GoogleAuthProvider();
-
+  console.log(auth)
+  console.log(provider)
   // Inicia sesión con Google
   signInWithPopup(auth, provider)
     .then((userCredential) => {
       // Usuario autenticado correctamente
       const user = userCredential.user;
       console.log("Usuario autenticado:", user);
-      // Aquí puedes almacenar la información del usuario en tu base de datos
+      // Aquí se puede almacenar la información del usuario en la base de datos
     })
     .catch((error) => {
       // Error al autenticar el usuario
@@ -47,11 +56,7 @@ onAuthStateChanged(auth, user => {
   }
 })
 
-import createTask from './create-new';
-import { loadProjects, loadTasks } from './dom-content';
-import { storageAvailable } from './local-storage';
 
-import './style.css';
 
 if (storageAvailable('localStorage')) {
     console.log('local storage found')
