@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-// import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import 'firebase/database';
 
 import createTask from './create-new';
 import { loadProjects, loadTasks } from './dom-content';
@@ -24,8 +24,27 @@ const auth = getAuth(firebaseApp);
 // const todosCol = collection(db, 'todos')
 // const snapshort = await getDocs(todosCol)
 
-// Agrega un listener para el botón de inicio de sesión con Google
+
+// Agrega un listener para botones sesión
 const googleLoginButton = document.getElementById("google-login-btn");
+const logoutButton = document.getElementById("logout-btn");
+
+onAuthStateChanged(auth, user => {
+  if(user !== null){
+    console.log('logged in!')
+    googleLoginButton.classList.add('hide')
+    logoutButton.classList.remove('hide')
+
+  } else {
+    console.log('No user')
+    googleLoginButton.classList.remove('hide')
+    logoutButton.classList.add('hide')
+
+  }
+})
+
+
+
 googleLoginButton.addEventListener("click", () => {
   // Crea el objeto del proveedor de Google
   const provider = new GoogleAuthProvider();
@@ -37,7 +56,10 @@ googleLoginButton.addEventListener("click", () => {
       // Usuario autenticado correctamente
       const user = userCredential.user;
       console.log("Usuario autenticado:", user);
-      // Aquí se puede almacenar la información del usuario en la base de datos
+      console.log('hoooola')
+      // Hide or display buttons
+      googleLoginButton.classList.add('hide')
+      logoutButton.classList.remove('hide')
     })
     .catch((error) => {
       // Error al autenticar el usuario
@@ -47,25 +69,37 @@ googleLoginButton.addEventListener("click", () => {
     });
 });
 
+logoutButton.addEventListener("click", () => {
+  auth.signOut()
+    .then(() => {
+      // El usuario ha cerrado sesión correctamente
+      console.log("Usuario ha cerrado sesión correctamente");
+      // Hide or display buttons
+      googleLoginButton.classList.remove('hide')
+      logoutButton.classList.add('hide')
+    })
+    .catch((error) => {
+      // Error al cerrar sesión
+      console.error("Error al cerrar sesión:", error);
+    });
+});
 
-onAuthStateChanged(auth, user => {
-  if(user !== null){
-    console.log('logged in!')
-  } else {
-    console.log('No user')
-  }
-})
-
-
-
+//it will load the task from localstorage (if they exist)
 if (storageAvailable('localStorage')) {
-    console.log('local storage found')
-  }
-  else {
-    console.log('no local storage available')
-  }
+  console.log('local storage found')
+  loadTasks();
+  loadProjects();
+}
+else {
+  console.log('no local storage available')
+}
 
-loadTasks();
-loadProjects();
+
+
+
+
+
+
+
 
 
