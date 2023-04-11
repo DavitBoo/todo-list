@@ -104,9 +104,9 @@ else {
 
 
 
-export const addTaskToFirebase = (task) => {
+export const addTaskToFirebase = (task, path) => {
   // Obtiene una referencia a la ubicación donde se almacenarán las tareas en la base de datos de Firebase
-  const tasksRef = ref(db, `tasks`);
+  const tasksRef = ref(db, path);
 
   // Crea un nuevo ID para la tarea
   const newTaskRef = push(tasksRef);

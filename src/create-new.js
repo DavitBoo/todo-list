@@ -19,10 +19,9 @@ const createTask = () =>  {
     
     if (user !== null) {
         // Agrega la nueva tarea a la base de datos de Firebase
-        addTaskToFirebase(newTask);
+        addTaskToFirebase(newTask, 'tasks');
     }
     else if(window.localStorage.getItem('task')){
-        console.log('hey')
         let storagedTasks = JSON.parse(window.localStorage.getItem('task'))
         storagedTasks.push(newTask)
         localStorage.setItem('task', JSON.stringify(storagedTasks))

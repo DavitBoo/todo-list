@@ -1,8 +1,14 @@
 import { loadProjects } from "./dom-content"
+import { addTaskToFirebase, auth } from "./index";
 
 export const createProject = projectName =>  {
 
-    if(window.localStorage.getItem('projects')){
+    const user = auth.currentUser;
+
+    if (user !== null){
+        addTaskToFirebase(projectName, 'projects');
+    }
+    else if(window.localStorage.getItem('projects')){
 
         let storagedProject = JSON.parse(window.localStorage.getItem('projects'))
         storagedProject.push(projectName)
