@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-import 'firebase/database';
+import { getDatabase, ref, push, set } from "firebase/database";
 
 import createTask from './create-new';
 import { loadProjects, loadTasks } from './dom-content';
@@ -12,15 +12,23 @@ import './style.css';
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyBKKV9Tn3eW_P4XXj2hDqX24YjSkWAYKds",
   authDomain: "todolist-9c8f1.firebaseapp.com",
+  databaseURL: "https://todolist-9c8f1-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "todolist-9c8f1",
   storageBucket: "todolist-9c8f1.appspot.com",
   messagingSenderId: "982450165115",
   appId: "1:982450165115:web:74d3595b356854f09e19de"
 });
 
+const firebaseConfig = {
+  // ...
+  // The value of `databaseURL` depends on the location of the database
+  databaseURL: "https://DATABASE_NAME.firebaseio.com",
+};
+
+
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(firebaseApp);
-// const db = getFirestore(firebaseApp);
+export const auth = getAuth(firebaseApp);
+const db = getDatabase(firebaseApp);
 // const todosCol = collection(db, 'todos')
 // const snapshort = await getDocs(todosCol)
 
@@ -95,6 +103,17 @@ else {
 }
 
 
+
+export const addTaskToFirebase = (task) => {
+  // Obtiene una referencia a la ubicación donde se almacenarán las tareas en la base de datos de Firebase
+  const tasksRef = ref(db, `tasks`);
+
+  // Crea un nuevo ID para la tarea
+  const newTaskRef = push(tasksRef);
+
+  // Agrega la nueva tarea a la base de datos de Firebase
+  set(newTaskRef, task);
+};
 
 
 
