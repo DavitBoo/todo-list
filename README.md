@@ -15,6 +15,17 @@ Create projects that can include tasks
 <li>They are classified according to whether they are pending tasks, if they are due today, if they are upcoming or if they are completed.</li>
 </ul>
 
+## The project uses
+<ul>
+<li>Vanilla.js</li>
+<li>Webpack</li>
+<li>localStorage</li>
+<li>Firebase</li>
+<ul>
+<li>Authentication/li>
+<li>Realtime database/li>
+</ul>
+</ul>
 ## Currently working features **05/04/2023**
 
 #### Using Firebase as a back end:
