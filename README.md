@@ -2,7 +2,7 @@
 
 live page: <a href="https://davitboo.github.io/todo-list/">Try it!</a>
 
-Save your task in localhost.
+Save your task in localstorage *(rightnow also in firebase db - working on it)*.
 The app have the next features:
 <ul>
 <li>
