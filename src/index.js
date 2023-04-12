@@ -19,13 +19,6 @@ const firebaseApp = initializeApp({
   appId: "1:982450165115:web:74d3595b356854f09e19de"
 });
 
-const firebaseConfig = {
-  // ...
-  // The value of `databaseURL` depends on the location of the database
-  databaseURL: "https://DATABASE_NAME.firebaseio.com",
-};
-
-
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(firebaseApp);
 export const db = getDatabase(firebaseApp);

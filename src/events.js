@@ -142,16 +142,18 @@ const Events = (() => {
     const btnEdit = document.getElementById('btn-edit')
     let taskInfo, taskIndex;
 
-    const editEventListener = () => {
+    const editEventListener =  () => {
         const editBtns = document.querySelectorAll('svg.edit-btn')
         editBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', async () => {
                 btnEdit.classList.remove('hide')
                 overlay.classList.remove('hide')
                 newTaskWindow.classList.remove('hide')
                 newTask.classList.remove('hide')
                 taskIndex = btn.dataset.task
-                taskInfo = loadEdition(taskIndex)
+                console.log(taskIndex)
+                taskInfo = await loadEdition(taskIndex)
+                console.log(taskInfo)
                 
                 valuesEdit(taskInfo)
             })

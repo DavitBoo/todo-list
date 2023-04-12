@@ -102,7 +102,6 @@ export const loadTasks = () => {
     }
     
     else if(window.localStorage.getItem('task')){
-        console.log('what??')
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
         let taskContent = taskStored.reduce((acc, task, i) => {
            
