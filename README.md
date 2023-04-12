@@ -29,7 +29,7 @@ Create projects that can include tasks
 
 ## Currently working features **05/04/2023**
 
-#### Using Firebase as a back end:
+#### Using Firebase as Back End:
 
 <ul>
     <li>Google credentials </li>
