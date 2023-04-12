@@ -1,6 +1,6 @@
 import { loadTasks } from "./dom-content"
 import { auth, db } from "./index";
-import { ref, onValue, get, child } from "firebase/database";
+import { ref, get, set } from "firebase/database";
 
 export const loadEdition = async (index) => {
     const user = auth.currentUser
@@ -18,10 +18,17 @@ export const loadEdition = async (index) => {
 }
 
 
-export const writeEdition = (index, editedTask) => {
-    let storagedTasks = JSON.parse(window.localStorage.getItem('task'))
-    storagedTasks[index] = editedTask
-    localStorage.setItem('task', JSON.stringify(storagedTasks))
-
+export const writeEdition = async (index, editedTask) => {
+    const user = auth.currentUser;
+  
+    if (user !== null) {
+      const tasksRef = ref(db, `tasks/${index}`);
+      await set(tasksRef, editedTask);
+    } else {
+      let storagedTasks = JSON.parse(window.localStorage.getItem("task"));
+      storagedTasks[index] = editedTask;
+      localStorage.setItem("task", JSON.stringify(storagedTasks));
+    }
+  
     loadTasks();
-}
+  };
