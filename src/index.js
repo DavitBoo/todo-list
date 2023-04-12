@@ -28,7 +28,7 @@ const firebaseConfig = {
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(firebaseApp);
-const db = getDatabase(firebaseApp);
+export const db = getDatabase(firebaseApp);
 // const todosCol = collection(db, 'todos')
 // const snapshort = await getDocs(todosCol)
 
@@ -114,11 +114,6 @@ export const addTaskToFirebase = (task, path) => {
   // Agrega la nueva tarea a la base de datos de Firebase
   set(newTaskRef, task);
 };
-
-
-
-
-
 
 
 

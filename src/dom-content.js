@@ -1,6 +1,8 @@
 import { createProject, getProject } from './create-project'
 import { isToday, isAfter } from 'date-fns'
 import Events from './events'
+import { auth, db } from "./index";
+import { ref, onValue } from "firebase/database";
 
 Events.sideBarItemsEvent()
 
@@ -41,8 +43,66 @@ Events.btnCancelEvent();
 Events.btnCloseEvent();
 Events.overlayEvent();
 
+// código duplicado - arreglar
 export const loadTasks = () => {
-    if(window.localStorage.getItem('task')){
+
+    const user = auth.currentUser;
+    if (user !== null){
+        const tasksRef = ref(db, 'tasks');
+        onValue(tasksRef, (snapshot) => {
+            const tasks = snapshot.val();
+            if (tasks) {
+              let taskContent = Object.keys(tasks).reduce((acc, taskId) => {
+                const task = tasks[taskId];
+                const { title, description, dueDate, dueTime, priority, project, checklist } = task;
+        
+                if (
+                  taskHeaderText.innerHTML.trim() === 'Inbox' && checklist === false ||
+                  taskHeaderText.innerHTML.trim() === 'Today' && isToday(new Date(dueDate)) ||
+                  taskHeaderText.innerHTML.trim() === 'Upcoming' && isAfter(new Date(dueDate), new Date()) ||
+                  taskHeaderText.innerHTML.trim() === 'Finished not deleted' && checklist === true ||
+                  taskHeaderText.innerHTML.trim() === project
+                ) {
+                  acc += `
+                    <div class="task" data-task="${taskId}">
+                      <div class="d-flex ${checklist ? 'completed-task' : ''}">
+                        <div class="d-flex">
+                          <div class="check-btn">
+                            ${showChecked(checklist, taskId)}
+                          </div>
+                          <div>
+                            ${title}
+                          </div>
+                        </div> 
+                        <div>
+                          ${downArrow(taskId)}
+                        </div>
+                        <div class="d-flex mod-btns">    
+                          ${editSvg(taskId)}
+                          ${showPriority(priority)}
+                          ${trashSvg(taskId)}
+                        </div>
+                      </div>
+                      <div class="display-date">
+                        ${dueDate} at ${dueTime}
+                      </div>
+                      <div class="task-description hide">
+                        ${description}
+                      </div>
+                    </div> 
+                  `
+                }
+                return acc;
+              }, '');
+              task.innerHTML = taskContent;
+              Events.clickOnTaskEvent();
+              Events.taskStateBtnEvent();
+            }
+        });
+    }
+    
+    else if(window.localStorage.getItem('task')){
+        console.log('what??')
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
         let taskContent = taskStored.reduce((acc, task, i) => {
            

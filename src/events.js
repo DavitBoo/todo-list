@@ -4,6 +4,7 @@ import { closeTask, loadTasks } from "./dom-content";
 import { loadEdition, writeEdition } from "./edit-task";
 import { createIt, reInitValues, valuesEdit } from "./task-form";
 
+
 const Events = (() => {
 
         const homeBtn = document.getElementById('home')
@@ -170,6 +171,7 @@ const Events = (() => {
 
     const deleteEventListener = () => {
         const deleteBtn = document.querySelectorAll('svg.delete-btn')
+        console.log(deleteBtn)
         deleteBtn.forEach(btn => {
             btn.addEventListener('click', () => {
                 deleteTask(btn.dataset.delete)
