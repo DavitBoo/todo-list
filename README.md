@@ -22,8 +22,8 @@ Create projects that can include tasks
 <li>localStorage</li>
 <li>Firebase</li>
 <ul>
-<li>Authentication/li>
-<li>Realtime database/li>
+<li>Authentication</li>
+<li>Realtime database</li>
 </ul>
 </ul>
 ## Currently working features **05/04/2023**
