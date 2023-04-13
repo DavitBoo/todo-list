@@ -23,10 +23,10 @@ export const writeEdition = async (index, editedTask) => {
   
     if (user !== null) {
       const tasksRef = ref(db, `tasks/${index}`);
-      await set(tasksRef, editedTask);
+      await set(tasksRef, await editedTask);
     } else {
       let storagedTasks = JSON.parse(window.localStorage.getItem("task"));
-      storagedTasks[index] = editedTask;
+      storagedTasks[index] = await editedTask;
       localStorage.setItem("task", JSON.stringify(storagedTasks));
     }
   

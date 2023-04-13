@@ -162,11 +162,13 @@ export const loadTasks = () => {
 const projectsDiv = document.getElementById('projects')
 const projectsOptions = document.getElementById('project')
 
-export const loadProjects = () => {
+export const loadProjects = async () => {
     projectsDiv.innerHTML = ''
     projectsOptions.innerHTML = `<option value="" selected disabled>Select Project</option>`
-    let projects = getProject()
+    let projects = await getProject()
 
+    if (typeof projects === "object")  projects =  Object.values(projects)
+    
     projects.forEach(proj => {
         projectsDiv.innerHTML += `<a href=""><div class="proj-marc">${proj}</div></a>`
         projectsOptions.innerHTML += `<option value="${proj}">${proj}</option>`
@@ -190,6 +192,7 @@ const showPriority = priority => {
 }
 
 const showChecked = (checklist, i) => {
+  console.log(checklist)
     let displayChecked = `<svg class="task-state" data-state="${i}" style="width:16px;height:16px" viewBox="0 0 24 24"> ${checklist ? `
         <path fill="green" d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
         </svg>` : `

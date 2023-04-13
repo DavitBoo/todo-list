@@ -173,7 +173,6 @@ const Events = (() => {
 
     const deleteEventListener = () => {
         const deleteBtn = document.querySelectorAll('svg.delete-btn')
-        console.log(deleteBtn)
         deleteBtn.forEach(btn => {
             btn.addEventListener('click', () => {
                 deleteTask(btn.dataset.delete)

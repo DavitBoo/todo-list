@@ -1,5 +1,6 @@
 import { loadProjects } from "./dom-content"
-import { addTaskToFirebase, auth } from "./index";
+import { addTaskToFirebase, auth, db } from "./index";
+import { get, ref } from "firebase/database";
 
 export const createProject = projectName =>  {
 
@@ -23,8 +24,22 @@ export const createProject = projectName =>  {
     loadProjects()
 }
 
-export const getProject = () => {
-    if(window.localStorage.getItem('projects')){
+export const getProject = async() => {
+    const user = auth.currentUser;
+
+    if (user !== null){
+        try {
+            const snapshot = await get(ref(db, "projects"));
+            if (snapshot.exists()) {
+              const projects = snapshot.val();
+              return projects;
+            } else {
+              return null;
+            }
+          } catch (error) {
+            console.error(error);
+          }
+    }else if(window.localStorage.getItem('projects')){
         return JSON.parse(window.localStorage.getItem('projects'))
     }
 }

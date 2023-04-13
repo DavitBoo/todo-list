@@ -32,7 +32,6 @@ const logoutButton = document.getElementById("logout-btn");
 
 onAuthStateChanged(auth, user => {
   if(user !== null){
-    console.log('logged in!')
     googleLoginButton.classList.add('hide')
     logoutButton.classList.remove('hide')
 
@@ -61,6 +60,9 @@ googleLoginButton.addEventListener("click", () => {
       // Hide or display buttons
       googleLoginButton.classList.add('hide')
       logoutButton.classList.remove('hide')
+
+      loadTasks();
+      loadProjects();
     })
     .catch((error) => {
       // Error al autenticar el usuario
@@ -78,6 +80,9 @@ logoutButton.addEventListener("click", () => {
       // Hide or display buttons
       googleLoginButton.classList.remove('hide')
       logoutButton.classList.add('hide')
+
+      loadTasks();
+      loadProjects();
     })
     .catch((error) => {
       // Error al cerrar sesión
