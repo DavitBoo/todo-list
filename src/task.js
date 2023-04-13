@@ -1,7 +1,7 @@
 
 export default class Task {
 
-    constructor(title, desciption, dueDate,  priority, project, checklist){
+    constructor(title, description, dueDate,  priority, project, checklist){
      
         const inputDate = dueDate.split('T')[0];
         const date = new Date(Date.parse(inputDate));
@@ -9,7 +9,7 @@ export default class Task {
         const formattedDate = date.toLocaleDateString('en-US', options);
         
         this.title = title
-        this.desciption = desciption 
+        this.description = description 
         this.dueDate = formattedDate
         this.dueTime = dueDate.split('T')[1]
         this.priority = priority

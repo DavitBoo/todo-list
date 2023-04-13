@@ -52,8 +52,10 @@ export const loadTasks = () => {
         onValue(tasksRef, (snapshot) => {
             const tasks = snapshot.val();
             if (tasks) {
+              
               let taskContent = Object.keys(tasks).reduce((acc, taskId) => {
                 const task = tasks[taskId];
+                
                 const { title, description, dueDate, dueTime, priority, project, checklist } = task;
         
                 if (
@@ -97,7 +99,7 @@ export const loadTasks = () => {
               task.innerHTML = taskContent;
               Events.clickOnTaskEvent();
               Events.taskStateBtnEvent();
-            }
+            }else task.innerHTML = ''
         });
     }
     
@@ -105,8 +107,7 @@ export const loadTasks = () => {
         let taskStored = JSON.parse(window.localStorage.getItem('task'))
         let taskContent = taskStored.reduce((acc, task, i) => {
            
-            let {title, desciption, dueDate, dueTime, priority, project, checklist} = task
-
+            let {title, description, dueDate, dueTime, priority, project, checklist} = task
             if(
 
                 taskHeaderText.innerHTML.trim() === 'Inbox' && checklist === false ||
@@ -141,7 +142,7 @@ export const loadTasks = () => {
                             ${dueDate} at ${dueTime}
                             </div>
                             <div class="task-description hide">
-                                ${desciption}
+                                ${description}
                             </div>
                 </div> `
             }

@@ -25,10 +25,10 @@ export const reInitValues = () => {
 }
 
 export const valuesEdit = (task) => {
-    let {title, desciption, defautlDate, priority, project, checklist} = task
+    let {title, description, defautlDate, priority, project, checklist} = task
 
     taskNameInput.value = title;
-    taskDescriptionInput.value = desciption;
+    taskDescriptionInput.value = description;
     dueDateInput.value = defautlDate;
     projectSelect.value = project
     prioritySelect.value = priority;

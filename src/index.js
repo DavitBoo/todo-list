@@ -35,6 +35,9 @@ onAuthStateChanged(auth, user => {
     googleLoginButton.classList.add('hide')
     logoutButton.classList.remove('hide')
 
+    loadTasks();
+    loadProjects();
+
   } else {
     console.log('No user')
     googleLoginButton.classList.remove('hide')
@@ -62,7 +65,7 @@ googleLoginButton.addEventListener("click", () => {
       logoutButton.classList.remove('hide')
 
       loadTasks();
-      loadProjects();
+      // loadProjects();
     })
     .catch((error) => {
       // Error al autenticar el usuario
