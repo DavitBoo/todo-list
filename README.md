@@ -33,8 +33,8 @@ Create projects that can include tasks
 #### Using Firebase as Back End:
 
 <ul>
-    <li>Google credentials </li> :heavy_check_mark:
-    <li>Realtime Database</li> :heavy_check_mark:
+    <li>Google credentials  :heavy_check_mark: </li>
+    <li>Realtime Database :heavy_check_mark: </li>
 </ul>
 
 ## Future ideas
