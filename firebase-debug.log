@@ -26,3 +26,28 @@
 [debug] [2023-04-13T09:48:28.479Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/todolist-9c8f1/webApps/-/config 200
 [debug] [2023-04-13T09:48:28.480Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/todolist-9c8f1/webApps/-/config {"projectId":"todolist-9c8f1","appId":"1:982450165115:web:74d3595b356854f09e19de","databaseURL":"https://todolist-9c8f1-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"todolist-9c8f1.appspot.com","locationId":"europe-west","apiKey":"AIzaSyBKKV9Tn3eW_P4XXj2hDqX24YjSkWAYKds","authDomain":"todolist-9c8f1.firebaseapp.com","messagingSenderId":"982450165115"}
 [debug] [2023-04-13T09:48:28.491Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/todolist-9c8f1 [none]
+[debug] [2023-04-13T09:48:29.206Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/todolist-9c8f1 200
+[debug] [2023-04-13T09:48:29.206Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/todolist-9c8f1 {"projectId":"todolist-9c8f1","projectNumber":"982450165115","displayName":"todolist","name":"projects/todolist-9c8f1","resources":{"hostingSite":"todolist-9c8f1","realtimeDatabaseInstance":"todolist-9c8f1-default-rtdb","storageBucket":"todolist-9c8f1.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_e94845c3-3fc3-48e1-af2a-d10be619782b"}
+[info] i  hosting[todolist-9c8f1]: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] +  hosting[todolist-9c8f1]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[warn] !  emulators: The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the emulated products have an interaction layer in Emulator UI or it cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5000 │
+└──────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [13/Apr/2023:09:48:35 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Apr/2023:09:48:35 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Apr/2023:09:48:35 +0000] "GET /main.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Apr/2023:09:48:35 +0000] \"GET /main.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Apr/2023:09:48:36 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Apr/2023:09:48:36 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Apr/2023:09:49:31 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Apr/2023:09:49:31 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Apr/2023:09:50:49 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Apr/2023:09:50:49 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\""}}
