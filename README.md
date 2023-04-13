@@ -28,7 +28,7 @@ Create projects that can include tasks
 </ul>
 </ul>
 
-## Currently working features **05/04/2023**
+## ~~Currently working features **05/04/2023**~~
 
 #### Using Firebase as Back End:
 
