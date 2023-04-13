@@ -57,7 +57,7 @@ export const loadTasks = () => {
                 const task = tasks[taskId];
                 
                 const { title, description, dueDate, dueTime, priority, project, checklist } = task;
-        
+                console.log(checklist)
                 if (
                   taskHeaderText.innerHTML.trim() === 'Inbox' && checklist === false ||
                   taskHeaderText.innerHTML.trim() === 'Today' && isToday(new Date(dueDate)) ||

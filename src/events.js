@@ -110,10 +110,10 @@ const Events = (() => {
         
         clickOnTask.forEach(toDo => {
             toDo.addEventListener('click', () => {
-                console.log(toDo)
+
                 let descriptionElement = toDo.querySelector('.task-description')
                 let downArrow = toDo.querySelector('.down-arrow')
-                console.log(descriptionElement)
+
                 if(descriptionElement.classList.contains('hide')){
                     descriptionElement.classList.remove('hide')
                     downArrow.classList.add('turn180')
@@ -126,11 +126,11 @@ const Events = (() => {
     }
 
 
-    const taskStateBtnEvent = () => {
+    const taskStateBtnEvent =  () => {
         let taskStateBtns = document.querySelectorAll('.task-state')
-        taskStateBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                let taskObj = loadEdition(btn.dataset.state)
+        taskStateBtns.forEach(btn =>  {
+            btn.addEventListener('click', async () => {
+                let taskObj = await loadEdition(btn.dataset.state)
                 if(taskObj.checklist) taskObj.checklist = false
                 else taskObj.checklist = true
                 writeEdition(btn.dataset.state, taskObj)
