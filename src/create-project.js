@@ -16,7 +16,6 @@ export const createProject = projectName =>  {
         localStorage.setItem('projects', JSON.stringify(storagedProject))
 
     }else{
-
         localStorage.setItem('projects', JSON.stringify([projectName]))
 
     }

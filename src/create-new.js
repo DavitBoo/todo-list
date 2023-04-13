@@ -18,8 +18,9 @@ const createTask = () =>  {
     const user = auth.currentUser;
     
     if (user !== null) {
-        // Agrega la nueva tarea a la base de datos de Firebase
-        addTaskToFirebase(newTask, 'tasks');
+        const userEmail = { email: user.email };
+        const taskWithUserEmail = { ...newTask, ...userEmail };
+        addTaskToFirebase(taskWithUserEmail, 'tasks');
     }
     else if(window.localStorage.getItem('task')){
         let storagedTasks = JSON.parse(window.localStorage.getItem('task'))
