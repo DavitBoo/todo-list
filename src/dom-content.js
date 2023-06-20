@@ -26,6 +26,18 @@ const btnAdd = document.getElementById('btn-add')
 const btnEdit = document.getElementById('btn-edit')
 
 
+/******  custom hamburguer menu js ********/
+const bar = document.querySelector('.bar')
+const bars = document.querySelectorAll('.bar > div')
+bar.addEventListener('click', () => {
+	bars.forEach(eachBar => {
+		eachBar.classList.toggle('movement')
+		console.log(eachBar)
+	})
+})
+/********************************** */
+
+
 Events.addTaskBtnEvent();
 
 
